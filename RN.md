@@ -198,6 +198,8 @@ export default SecondPage;
 We then need to set up our Navigator to go back and forth from one page to the other.
 First, in our `index.ios.js`, let's remove what's in the container View and add a Navigator:
 
+**index.ios.js**
+
 ```
 render() {
   return (
@@ -218,13 +220,15 @@ Let's analyze these lines.
 
 What should our `renderScene` do ? Well, it should render our component. Let's see how to write this:
 
+**index.ios.js**
+
 ```
 renderScene = (route, navigator) => {
   return React.createElement(route.component, {navigator: navigator});
 }
 ```
 
-Our renderScene method takes two arguments. The first one is the route we want to mount. The second one is the navigator. We'll need to pass the navigator to our components as a prop to be able to navigate back and forth.
+Our `renderScene` method takes two arguments. The first one is the route we want to mount. The second one is the navigator. We'll need to pass the navigator to our components as a prop to be able to navigate back and forth.
 Here, I wrote a one liner that will create a React element based on the route given to mount. Our initial route was FirstPage.route(), so the first component that will be mounted is FirstPage. Remember, in our firstPage class, we wrote a route method that returned a JSON with component set to ... FirstPage.
 
 
