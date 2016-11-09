@@ -110,7 +110,7 @@ First, we need to write a couple components that we'll allow us to try our navig
 
 Let's create a src folder where the components inside will be used by both our Android and iOS app. Inside our src folder, let's create a components folder and inside it two JS files : `firstPage.js` and `secondPage.js`
 
-In our firstPage component we'll simply write a text that says ... "This is the first view". And in our second page, we'll simply write a text that says ... "This is the second view". You can find all the files we will write on GitHub [here].
+In our firstPage component we'll write a text that says ... "This is the first view" and add a button to go to the second view. And in our second page, we'll simply write a text that says ... "This is the second view". You can find all the files we will write on my GitHub [here].
 
 **firstPage.js**
 
@@ -195,6 +195,10 @@ const styles = StyleSheet.create({
 export default SecondPage;
 ```
 
+In the FirstPage component, our button is a `TouchableHighlight` and it has a `onPress` method that pushes the second view.
+Our second page component just has a text.
+
+
 We then need to set up our Navigator to go back and forth from one page to the other.
 First, in our `index.ios.js`, let's remove what's in the container View and add a Navigator:
 
@@ -228,10 +232,37 @@ renderScene = (route, navigator) => {
 }
 ```
 
-Our `renderScene` method takes two arguments. The first one is the route we want to mount. The second one is the navigator. We'll need to pass the navigator to our components as a prop to be able to navigate back and forth.
+Our `renderScene` method takes two arguments. The first one is the route we want to mount and the second one is the navigator. We'll need to pass the navigator to our components as a prop to be able to navigate back and forth.
 Here, I wrote a one liner that will create a React element based on the route given to mount. Our initial route was FirstPage.route(), so the first component that will be mounted is FirstPage. Remember, in our firstPage class, we wrote a route method that returned a JSON with component set to ... FirstPage.
 
+```
+static route(props) {
+  return {
+    id: 'FirstPage',
+    component: FirstPage
+  };
+}
+```
 
+Let's run our app... Here is how it should look.
 
+![First screen](images/screenshot1.png)
 
+And when pressing the button...
 
+![Second screen](images/screenshot2.png)
+
+Now, there's something missing here. Indeed, when navigating in an app, we're expecting a Navbar on the top !
+
+### Putting a Navbar
+
+Navigator has a way of doing this. You can pass a component written by your hands to it and it will display it as a Navbar.
+However, react native being an open source project, the community has developed a lot of packages for us to use. In [this repository](https://github.com/jondot/awesome-react-native), you'll find a non-exhaustive list of great packages.
+
+Here, we'll be using the package [React Native Navbar](https://github.com/react-native-community/react-native-navbar).
+
+Let's install it.
+
+```
+npm i --save react-native-navbar
+```
