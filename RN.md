@@ -25,14 +25,14 @@ Testing you application on an Android device is a bit tougher. The best practice
 1. Install [Android Studio](https://developer.android.com/studio/install.html)
 2. Set up paths
 
-```
+```bash
 export ANDROID_HOME=~/Android/Sdk
 export PATH=${PATH}:${ANDROID_HOME}/tools
 ```
 
 3. Set up Android Virtual Device (if not set up by Android Studio)
 
-```
+```bash
 android avd
 ```
 
@@ -40,13 +40,13 @@ android avd
 
 To create a React Native App run:
 
-```
+```bash
 react-native init <YourAppNameHere>
 ```
 
 Then launch it on the simulator you want with :
 
-```
+```bash
 react-native run-ios
 react-native run-android
 ```
@@ -61,7 +61,7 @@ Open you favorite editor and let's take a look at what React Native generated fo
 We have two files that represent our two entry points : one for iOS (`index.ios.js`) and one for Android (`index.android.js`).
 Let's play with the `index.ios.js` and change the texto and style.
 
-```
+```javascript
 <Text style={styles.welcome}>
   Our first React Native App
 </Text>
@@ -73,7 +73,7 @@ You can see the changes in your emulator by pressing Ctrl+R or Cmd+R thanks to s
 
 The sample app gives us an example of how the styling works in React Native.
 
-```
+```javascript
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -114,7 +114,7 @@ In our firstPage component we'll write a text that says ... "This is the first v
 
 **firstPage.js**
 
-```
+```javascript
 import React, {Component} from 'react';
 import {
   StyleSheet,
@@ -158,7 +158,7 @@ export default FirstPage;
 
 **secondPage.js**
 
-```
+```javascript
 import React, {Component} from 'react';
 import {
   StyleSheet,
@@ -204,7 +204,7 @@ First, in our `index.ios.js`, let's remove what's in the container View and add 
 
 **index.ios.js**
 
-```
+```javascript
 render() {
   return (
     <View style={styles.container}>
@@ -226,7 +226,7 @@ What should our `renderScene` do ? Well, it should render our component. Let's s
 
 **index.ios.js**
 
-```
+```javascript
 renderScene = (route, navigator) => {
   return React.createElement(route.component, {navigator: navigator});
 }
@@ -235,7 +235,9 @@ renderScene = (route, navigator) => {
 Our `renderScene` method takes two arguments. The first one is the route we want to mount and the second one is the navigator. We'll need to pass the navigator to our components as a prop to be able to navigate back and forth.
 Here, I wrote a one liner that will create a React element based on the route given to mount. Our initial route was FirstPage.route(), so the first component that will be mounted is FirstPage. Remember, in our firstPage class, we wrote a route method that returned a JSON with component set to ... FirstPage.
 
-```
+**FirstComponent**
+
+```javascript
 static route(props) {
   return {
     id: 'FirstPage',
@@ -250,7 +252,6 @@ Let's run our app... Here is how it should look.
 
 And when pressing the button...
 
-
 Now, there's something missing here. Indeed, when navigating in an app, we're expecting a Navbar on the top !
 
 ### Putting a Navbar
@@ -262,19 +263,19 @@ Here, we'll be using the package [React Native Navbar](https://github.com/react-
 
 Let's install it.
 
-```
+```javascript
 npm i --save react-native-navbar
 ```
 
 Then, let's import it in our two views.
 
-```
+```javascript
 import NavBar from 'react-native-navbar';
 ```
 
 **FirstComponent**
 
-```
+```javascript
 render() {
   const titleConfig = {
     title: 'First Component',
@@ -296,7 +297,7 @@ render() {
 
 **SecondComponent**
 
-```
+```javascript
 render() {
   const titleConfig = {
     title: 'Second Component',
@@ -320,7 +321,7 @@ render() {
 
 In order for our components to render as we expect them to, we need to change a bit our components' styles.
 
-```
+```javascript
 container: {
   flex: 1
 },
