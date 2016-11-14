@@ -22,19 +22,19 @@ XCode comes up with a simulator, which we will use for development.
 ### Android
 
 Testing you application on an Android device is a bit tougher. The best practices are described on [React Native's website](https://facebook.github.io/react-native/docs/getting-started.html). Here are the main points:
-1. Install [Android Studio](https://developer.android.com/studio/install.html)
-2. Set up paths
 
-```bash
-export ANDROID_HOME=~/Android/Sdk
-export PATH=${PATH}:${ANDROID_HOME}/tools
-```
+1. Install [Android Studio](https://developer.android.com/studio/install.html)
+
+2. Set up paths
+   ```bash
+   export ANDROID_HOME=~/Android/Sdk
+   export PATH=${PATH}:${ANDROID_HOME}/tools
+   ```
 
 3. Set up Android Virtual Device (if not set up by Android Studio)
-
-```bash
-android avd
-```
+   ```bash
+   android avd
+   ```
 
 ## Creating and running a React Native App
 
@@ -52,7 +52,8 @@ react-native run-android
 ```
 
 You should see the following screen on your emulator:
-![iOS simulator showing the sample app](sample-app-screen.png)
+
+<img src='assets/sample-app.png' height=600 />
 
 ## Modifying our app
 
