@@ -246,11 +246,7 @@ static route(props) {
 
 Let's run our app... Here is how it should look.
 
-First Component                                  |  Second Component
-:-----------------------------------------------:|:------------------------------------------------:
-<img src='images/screenshot1.png' height=500 />  |  <img src='images/screenshot2.png' height=500 />
-
-
+<img src='assets/screenshot1.gif' height=600 />
 
 And when pressing the button...
 
@@ -339,7 +335,4 @@ content: {
 ## Conclusion
 
 We now have a fully functional React Native app. Of course, it doesn't do much yet but I'm sure you'll be able to build on this.
-To go further in building apps, the next thing to look at is redux. 
-
-
-
+To go further in building apps, the next good thing to take a look at is redux.
