@@ -11,7 +11,7 @@ React Native is a framework to build **native** apps using only Javascript. For 
 The first step is to install React Native:)
 I won't pretend explaining this better than what has already been done inthe last few months. However, I have a few suggestions and links to share
 
-To install the CLI tools for React Native, you'll need Node.js (Node.js 6 works fine, I haven't tested other versions but React Native should work with Node.js 4 or newer). 
+To install the CLI tools for React Native, you'll need Node.js (Node.js 6 works fine, I haven't tested other versions but React Native should work with Node.js 4 or newer).
 Then you can just run `npm install -g react-native-cli` to install React Native.
 
 ### iOS
@@ -220,7 +220,7 @@ render() {
 Let's analyze these lines.
 1. We've given our Navigator an initial route that will be displayed when loading our app.
 2. We've given a renderScene function that will render our different scenes. We'll take a look at this function in a moment.
-3. We've given a style to our Navigator 
+3. We've given a style to our Navigator
 
 What should our `renderScene` do ? Well, it should render our component. Let's see how to write this:
 
@@ -246,11 +246,14 @@ static route(props) {
 
 Let's run our app... Here is how it should look.
 
-![First screen](images/screenshot1.png)
+First Component                                  |  Second Component
+:-----------------------------------------------:|:------------------------------------------------:
+<img src='images/screenshot1.png' height=500 />  |  <img src='images/screenshot2.png' height=500 />
+
+
 
 And when pressing the button...
 
-![Second screen](images/screenshot2.png)
 
 Now, there's something missing here. Indeed, when navigating in an app, we're expecting a Navbar on the top !
 
@@ -266,3 +269,77 @@ Let's install it.
 ```
 npm i --save react-native-navbar
 ```
+
+Then, let's import it in our two views.
+
+```
+import NavBar from 'react-native-navbar';
+```
+
+**FirstComponent**
+
+```
+render() {
+  const titleConfig = {
+    title: 'First Component',
+  };
+
+  return (
+    <View style={styles.container}>
+      <NavBar title={titleConfig} />
+      <View style={styles.content}>
+        <Text>This is the first view</Text>
+        <TouchableHighlight onPress={() => this.props.navigator.push(SecondPage.route())} style={styles.button}>
+          <Text>Go to second view</Text>
+        </TouchableHighlight>
+      </View>
+    </View>
+  );
+}
+```
+
+**SecondComponent**
+
+```
+render() {
+  const titleConfig = {
+    title: 'Second Component',
+  };
+
+  const leftButtonConfig = {
+    title: 'Previous',
+    handler: () => this.props.navigator.pop(),
+  }
+
+  return (
+    <View style={styles.container}>
+      <NavBar title={titleConfig} leftButton={leftButtonConfig} />
+      <View style={styles.content}>
+        <Text>This is the second view</Text>
+      </View>
+    </View>
+  );
+}
+```
+
+In order for our components to render as we expect them to, we need to change a bit our components' styles.
+
+```
+container: {
+  flex: 1
+},
+content: {
+  flex: 1,
+  backgroundColor: '#FFFF00',
+  justifyContent: 'center',
+  alignItems: 'center'
+}
+```
+
+## Conclusion
+
+We now have a fully functional React Native app. Of course, it doesn't do much yet but I'm sure you'll be able to build on this.
+To go further in building apps, the next thing to look at is redux. 
+
+
+

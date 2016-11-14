@@ -5,6 +5,8 @@ import {
   View
 } from 'react-native';
 
+import NavBar from 'react-native-navbar';
+
 class SecondPage extends Component {
   static route(props) {
     return {
@@ -14,9 +16,21 @@ class SecondPage extends Component {
   }
 
   render() {
+    const titleConfig = {
+      title: 'Second Component',
+    };
+
+    const leftButtonConfig = {
+      title: 'Previous',
+      handler: () => this.props.navigator.pop(),
+    }
+
     return (
       <View style={styles.container}>
-        <Text>This is the second view</Text>
+        <NavBar title={titleConfig} leftButton={leftButtonConfig} />
+        <View style={styles.content}>
+          <Text>This is the second view</Text>
+        </View>
       </View>
     );
   }
@@ -24,10 +38,13 @@ class SecondPage extends Component {
 
 const styles = StyleSheet.create({
   container: {
+    flex: 1
+  },
+  content: {
     flex: 1,
+    backgroundColor: '#FFFF00',
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#FFFF00',
   },
 });
 
