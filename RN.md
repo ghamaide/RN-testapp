@@ -1,14 +1,14 @@
 # Build Up a Cross Platform App in 10 minutes with React Native
 
-Mobile Apps are a crucial part of our daily life. Yet, building a mobile app for everyone requires to have knowledge in at least two languages: Java for Android and Swift or Objective-C for iOS. Or at least, that’s what I thought until I discovered **React Native**.
+Mobile Apps are a crucial part of our daily life. Yet, building a native mobile app for everyone requires to have knowledge in at least two languages: Java for Android and Swift or Objective-C for iOS. At least, that’s what I thought until I discovered **React Native**.
 
 ## What is React Native ?
 
-React Native is a framework to build **native** apps using only Javascript. For the Javascript fan I am, it's a great opportunity. As you read it, React Native builds native apps, and not hybrid apps or «HTML5» apps. This is possible because the Javascript written is transformed into native UI blocks for Android or iOS. I suggest you check React Native's [official website](https://facebook.github.io/react-native/) for more information. Let's jump into building of first mobile app.
+React Native is a framework to build native apps using only Javascript. For the Javascript fan I am, it's a great opportunity. React Native builds **native apps**, and not **hybrid apps** or «HTML5» apps. This is possible because the Javascript written is transformed into native UI blocks for Android or iOS. I suggest you check React Native's [official website](https://facebook.github.io/react-native/) for more information. Let's jump into building of first mobile app.
 
 ## Installing React Native
 
-The first step is to install React Native:)
+The **first step** is installing React Native :)
 I won't pretend explaining this better than what has already been done inthe last few months. However, I have a few suggestions and links to share
 
 To install the CLI tools for React Native, you'll need Node.js (Node.js 6 works fine, I haven't tested other versions but React Native should work with Node.js 4 or newer).
@@ -57,10 +57,10 @@ You should see the following screen on your emulator:
 
 ## Modifying our app
 
-Let's enter the fun part! Creating our first cross platform mobile app!
+Let's enter the fun part! Creating our **first cross platform mobile app**!
 Open you favorite editor and let's take a look at what React Native generated for us.
 We have two files that represent our two entry points : one for iOS (`index.ios.js`) and one for Android (`index.android.js`).
-Let's play with the `index.ios.js` and change the texto and style.
+Let's play with the `index.ios.js` and change the text and style.
 
 ```javascript
 <Text style={styles.welcome}>
@@ -82,23 +82,14 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#F5FCFF',
   },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
 });
 ```
 
-There are two key ideas here to have in mind when developping in React Native.
-1. React Native uses flexbox for the design. If you've never used flexbox, here are two awesome links to master it in minutes :)
+There are **two key points** to have in mind when developing in React Native.
+1. React Native uses **flexbox** for the design. If you've never used flexbox, here are two awesome links to master it in minutes :)
   * A [TD game](http://www.flexboxdefense.com/)
   * A greatly written [guide](https://css-tricks.com/snippets/css/a-guide-to-flexbox/)
+
 2. React Native writes CSS styles in camel case.
   * `background-color` => `backgroundColor`
   * `border-width` => `borderWidth`
@@ -110,8 +101,6 @@ You can find a list of components to use in React Native on their official websi
 First, we need to write a couple components that we'll allow us to try our navigation.
 
 Let's create a src folder where the components inside will be used by both our Android and iOS app. Inside our src folder, let's create a components folder and inside it two JS files : `firstPage.js` and `secondPage.js`
-
-In our firstPage component we'll write a text that says ... "This is the first view" and add a button to go to the second view. And in our second page, we'll simply write a text that says ... "This is the second view". You can find all the files we will write on my GitHub [here].
 
 **firstPage.js**
 
@@ -199,7 +188,6 @@ export default SecondPage;
 In the FirstPage component, our button is a `TouchableHighlight` and it has a `onPress` method that pushes the second view.
 Our second page component just has a text.
 
-
 We then need to set up our Navigator to go back and forth from one page to the other.
 First, in our `index.ios.js`, let's remove what's in the container View and add a Navigator:
 
@@ -233,8 +221,7 @@ renderScene = (route, navigator) => {
 }
 ```
 
-Our `renderScene` method takes two arguments. The first one is the route we want to mount and the second one is the navigator. We'll need to pass the navigator to our components as a prop to be able to navigate back and forth.
-Here, I wrote a one liner that will create a React element based on the route given to mount. Our initial route was FirstPage.route(), so the first component that will be mounted is FirstPage. Remember, in our firstPage class, we wrote a route method that returned a JSON with component set to ... FirstPage.
+Our `renderScene` method takes two arguments. The first one is the **component** we want to mount and the second one is the navigator itself. We'll need to pass the navigator to our components as a prop to be able to navigate back and forth.
 
 **FirstComponent**
 
@@ -249,17 +236,17 @@ static route(props) {
 
 Let's run our app... Here is how it should look.
 
-<img src='assets/screenshot1.gif' height=600 />
+|                  First Screen                     |      Second Screen (after pressing the button)     |
+|:-------------------------------------------------:|:--------------------------------------------------:|
+|  <img src='assets/screenshot1.png' height=600 />  |  <img src='assets/screenshot2.png' height=600 />   |
 
-And when pressing the button...
-
-Now, there's something missing here. Indeed, when navigating in an app, we're expecting a Navbar on the top !
+Now, there's something missing here. Indeed, when navigating in an app, we're expecting a **Navbar** on the top to navigate !
 
 ### Putting a Navbar
 
 Navigator has a way of doing this. You can pass a component written by your hands to it and it will display it as a Navbar.
-However, react native being an open source project, the community has developed a lot of packages for us to use. In [this repository](https://github.com/jondot/awesome-react-native), you'll find a non-exhaustive list of great packages.
-
+However, react native being an open source project, the community has developed a lot of packages for us to use.
+In [this repository](https://github.com/jondot/awesome-react-native), you'll find a non-exhaustive list of great packages.
 Here, we'll be using the package [React Native Navbar](https://github.com/react-native-community/react-native-navbar).
 
 Let's install it.
@@ -333,6 +320,10 @@ content: {
   alignItems: 'center'
 }
 ```
+
+Here is what we have now !
+
+<img src='assets/screenshot3.gif' height=600 />
 
 ## Conclusion
 
