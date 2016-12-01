@@ -57,9 +57,9 @@ You should see the following screen on your emulator:
 
 ## Modifying our app
 
-Let's enter the fun part! Creating our **first cross platform mobile app**!
-Open you favorite editor and let's take a look at what React Native generated for us.
-We have two files that represent our two entry points : one for iOS (`index.ios.js`) and one for Android (`index.android.js`).
+Let's enter the fun part! Creating our **first cross platform mobile app**! Open you favorite editor and let's take a look at what React Native generated for us. The whole code for this article is available [here](https://github.com/ghamaide/RN-testapp).
+
+We have two files that represent our two entry points: one for iOS (`index.ios.js`) and one for Android (`index.android.js`).
 Let's play with the `index.ios.js` and change the text and style.
 
 ```javascript
@@ -97,8 +97,6 @@ There are **two key points** to have in mind when developing in React Native.
 ### React Native Components
 
 You can find a list of components to use in React Native on their official website. For our demo app, we'll use the navigation component given to us by RN : `Navigator`
-
-First, we need to write a couple components that we'll allow us to try our navigation.
 
 Let's create a src folder where the components inside will be used by both our Android and iOS app. Inside our src folder, let's create a components folder and inside it two JS files : `firstPage.js` and `secondPage.js`
 
